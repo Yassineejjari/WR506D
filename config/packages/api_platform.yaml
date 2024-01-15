@@ -1,0 +1,23 @@
+api_platform:
+    title: Actors/Movies App
+    version: 1.667.3
+    # The default number of items per page.
+
+    # Good defaults for REST APIs
+    defaults:
+        pagination_items_per_page: 30
+        items_per_page_parameter_name: 'itemsPerPage'
+        pagination_client_enabled: true
+        stateless: true
+        cache_headers:
+            vary: ['Content-Type', 'Authorization', 'Origin']
+        extra_properties:
+            standard_put: true
+            graphql:
+                enabled: true
+            collection:
+                pagination:
+                    enabled: true
+
+                    mapping:
+                        paths: [ '%kernel.project_dir%/src/Entity' ]
