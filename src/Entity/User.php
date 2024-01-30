@@ -1,6 +1,8 @@
 <?php
 
+
 # api/src/Entity/User.php
+// src/Entity/User.php
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiFilter;
@@ -47,6 +49,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Email]
     #[Groups(['user:read', 'user:create', 'user:update'])]
     #[ORM\Column(length: 180, unique: true)]
+
+    #[Assert\Type('string')]
+
     private ?string $email = null;
     #[ORM\Column]
     private ?string $password = null;
@@ -55,6 +60,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $plainPassword = null;
     #[ORM\Column(type: 'json')]
     private array $roles = [];
+
+
+    #[ORM\Column(length: 255)]
+    private ?string $username = null;
+
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?MediaObject $MediaObject = null;
 
     public function getId(): ?int
     {
@@ -121,4 +133,27 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->plainPassword = null;
     }
 
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): static
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    public function getMediaObject(): ?MediaObject
+    {
+        return $this->MediaObject;
+    }
+
+    public function setMediaObject(?MediaObject $MediaObject): static
+    {
+        $this->MediaObject = $MediaObject;
+
+        return $this;
+    }
 }

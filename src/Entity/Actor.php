@@ -42,10 +42,17 @@ class Actor
 
 
 
+
     #[ORM\ManyToMany(targetEntity: Movie::class, mappedBy: 'actors', cascade : ['persist', 'remove'], fetch: 'EAGER')]
     private Collection $movies;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
+
+    #[ORM\ManyToMany(targetEntity: Movie::class, mappedBy: 'Actor', cascade : ['persist', 'remove'], fetch: 'EAGER')]
+    private Collection $movies;
+
+    #[ORM\Column(type: Types::TEXT)]
+
     #[Assert\Choice(['Oscars', 'Grammies', 'Festival de Cannes'])]
     private ?string $reward = null;
 
