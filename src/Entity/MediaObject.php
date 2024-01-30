@@ -63,6 +63,10 @@ class MediaObject
     public ?File $file = null;
 
     #[ORM\Column(nullable: true)]
+
+    #[Groups(['media_object:read'])]
+
+
     public ?string $filePath = null;
 
     #[ORM\OneToMany(mappedBy: 'MediaObject', targetEntity: Movie::class)]

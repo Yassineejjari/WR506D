@@ -1,4 +1,7 @@
 <?php
+
+
+# api/src/Entity/User.php
 // src/Entity/User.php
 namespace App\Entity;
 
@@ -46,7 +49,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Email]
     #[Groups(['user:read', 'user:create', 'user:update'])]
     #[ORM\Column(length: 180, unique: true)]
+
     #[Assert\Type('string')]
+
     private ?string $email = null;
     #[ORM\Column]
     private ?string $password = null;
@@ -56,11 +61,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'json')]
     private array $roles = [];
 
+
     #[ORM\Column(length: 255)]
     private ?string $username = null;
 
     #[ORM\ManyToOne(inversedBy: 'users')]
     private ?MediaObject $MediaObject = null;
+
     public function getId(): ?int
     {
         return $this->id;
