@@ -9,7 +9,7 @@ Ceci est le projet back-end du projet WR506D
 Assurez-vous d'avoir installé les éléments suivants avant de commencer :
 
 - PHP [version]
-- Composer [version]
+- Composer [version] (composer install)
 - Symfony CLI [version]
 
 
@@ -19,3 +19,13 @@ Assurez-vous d'avoir installé les éléments suivants avant de commencer :
 
    ```bash
    git clone https://github.com/Yassineejjari/WR506D.git
+
+2. Commande utile 
+
+
+- composer install
+- php bin/console doctrine:database:create
+- php bin/console doctrine:migrations:migrate
+- symfony server:start
+
+
